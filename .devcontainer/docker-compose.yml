@@ -1,0 +1,8 @@
+services:
+  devcontainer:
+    image: node:latest
+    user: ${CONTAINER_UID}:${CONTAINER_GID}
+    entrypoint: [ "bash", "-c", "sleep 9999999" ]
+    runtime: runsc
+    volumes:
+      - ../:/workspace:cached

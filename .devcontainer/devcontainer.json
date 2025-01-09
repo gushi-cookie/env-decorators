@@ -1,0 +1,15 @@
+{
+    "name": "environments-resolve dev container",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspace",
+    "shutdownAction": "none",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "eamodio.gitlens",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        }
+    }
+}
