@@ -1,8 +1,11 @@
 services:
   devcontainer:
-    image: node:latest
+    image: environments-resolve-dev-container
+    container_name: environments-resolve-dev-container
     user: ${CONTAINER_UID}:${CONTAINER_GID}
-    entrypoint: [ "bash", "-c", "sleep 9999999" ]
     runtime: runsc
+    build:
+      context: ../
+      dockerfile: .devcontainer/Dockerfile
     volumes:
       - ../:/workspace:cached
