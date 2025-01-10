@@ -9,3 +9,8 @@ services:
       dockerfile: .devcontainer/Dockerfile
     volumes:
       - ../:/workspace:cached
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 2gb
