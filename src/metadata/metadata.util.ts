@@ -2,13 +2,13 @@ import { ClassMetadata } from './metadata.interface';
 
 
 /**
- * Symbol property of the current library for storing metadata objects in classes.
+ * Symbol property of the current library for accessing metadata objects in classes.
  */
 export const symbolProperty = Symbol('environments-resolve_class-metadata');
 
 /**
  * Extract a metadata object of a specified class or create and set
- * a new one if doesn't exist.
+ * a new one, if doesn't exist.
  * @param cls - target class.
  * @returns metadata object stored in the class.
  */
