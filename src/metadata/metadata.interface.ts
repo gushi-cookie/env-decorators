@@ -1,4 +1,4 @@
-export type EnvironmentParseCallback = (environment: string) => any;
+export type EnvironmentParseCallback = (envValue: string) => any;
 
 /**
  * Metadata type for classes that have environment properties.

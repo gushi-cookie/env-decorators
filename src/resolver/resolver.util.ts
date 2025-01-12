@@ -12,7 +12,7 @@ import { extractMetadata } from '../metadata/metadata.util';
  * @param cls - target class.
  * @param followProtoChain - should parent classes metadata be considered too. Default: true.
  */
-function resolveStaticProperties(cls: Function, followProtoChain: boolean = true): void {
+export function resolveStaticProperties(cls: Function, followProtoChain: boolean = true): void {
     const metadata = extractMetadata(cls);
     if(!metadata) {
         if(!followProtoChain) return;
@@ -29,7 +29,7 @@ function resolveStaticProperties(cls: Function, followProtoChain: boolean = true
         let environment: any = process.env[property.envName];
         if(!environment) {
             if(!property.required) continue;
-            throw new Error(`Environment property '${property.envName}' associated with '${property.key.toString()}' static property is undefined but required.`);
+            throw new Error(`Environment property '${property.envName}' associated with '${_metadataKeyToString(property.key)}' static property is undefined but required.`);
         }
 
         if(property.parseCallback) environment = property.parseCallback(environment);
@@ -39,7 +39,7 @@ function resolveStaticProperties(cls: Function, followProtoChain: boolean = true
 
     if(followProtoChain) {
         let parentCls = (cls as any)['__proto__'];
-        if(!parentCls) resolveStaticProperties(parentCls, followProtoChain);
+        if(parentCls) resolveStaticProperties(parentCls, followProtoChain);
     }
 }
 
@@ -54,7 +54,7 @@ function resolveStaticProperties(cls: Function, followProtoChain: boolean = true
  * @param obj - target object.
  * @param followProtoChain - should parent classes metadata be considered too. Default: true.
  */
-function resolveInstanceProperties(obj: object, followProtoChain: boolean = true): void {
+export function resolveInstanceProperties(obj: object, followProtoChain: boolean = true): void {
     const cls = obj.constructor;
     _resolveEnvironmentsByClass(cls, obj);
     if(!followProtoChain) return;
