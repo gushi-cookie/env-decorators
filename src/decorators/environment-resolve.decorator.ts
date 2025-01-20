@@ -14,7 +14,7 @@ import { EnvironmentParseCallback } from '../metadata/metadata.interface';
  * @returns a decorator function.
  */
 export function EnvironmentResolve(envName: string, required: boolean = true, parseCallback?: EnvironmentParseCallback): PropertyDecorator {
-    return (object: Object, key: string | symbol) => {
+    return (object: object, key: string | symbol) => {
         let cls: Function;
         let isPropertyStatic = false;
         if(object instanceof Function) {
