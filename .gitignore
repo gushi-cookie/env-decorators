@@ -1,7 +1,6 @@
 .devcontainer/.env
 
 # compiled output
-dist
 node_modules
 build
 tsconfig.tsbuildinfo

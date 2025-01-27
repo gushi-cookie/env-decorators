@@ -6,6 +6,7 @@ import { resolveStaticProperties } from './resolver.util';
 
 test('should resolve static property', () => {
     class TestClass {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_1', true)
         static staticProp1: string;
 
@@ -27,11 +28,13 @@ test('should resolve static property', () => {
 
 test('should resolve static property only for a derived class', () => {
     class A {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_1')
         static parentProperty: string;
     }
 
     class B extends A {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_2')
         static derivedProperty: string;
     }
@@ -52,6 +55,7 @@ test('should resolve static property only for a derived class', () => {
 
 test('should resolve static properties for the whole parents chain of a class', () => {
     class A {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_1')
         static propA: string;
     }
@@ -65,11 +69,13 @@ test('should resolve static properties for the whole parents chain of a class', 
     }
 
     class D extends C {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_2')
         static propD: string;
     }
 
     class E extends D {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_3')
         static propE: string;
     }
@@ -100,6 +106,7 @@ test('should resolve static required properties correctly', () => {
 
 
     class RequiredSet {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV', true)
         static property: string;
     }
@@ -108,6 +115,7 @@ test('should resolve static required properties correctly', () => {
 
 
     class RequiredUnset {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_UNSET', true)
         static property: string;
     }
@@ -115,6 +123,7 @@ test('should resolve static required properties correctly', () => {
 
 
     class NonRequiredSet {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV', false)
         static property: string;
     }
@@ -123,6 +132,7 @@ test('should resolve static required properties correctly', () => {
 
 
     class NonRequiredUnset {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_UNSET', false)
         static property: string;
     }
@@ -144,6 +154,7 @@ test('should parse static property', () => {
     }
 
     class TestClass {
+        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV', true, parseCallback)
         static date: Date;
     }

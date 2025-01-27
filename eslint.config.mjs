@@ -4,7 +4,7 @@ import jest from 'eslint-plugin-jest';
 
 export default ts.config(
   {
-    ignores: ['dist/**']
+    ignores: ['build/**']
   },
   js.configs.recommended,
   ...ts.configs.recommended,
