@@ -4,7 +4,7 @@ import { ClassMetadata } from './metadata.interface';
 /**
  * Symbol property of the current library for accessing metadata objects in classes.
  */
-export const symbolProperty = Symbol('environments-resolve_class-metadata');
+export const symbolProperty = Symbol('env-decorators_class-metadata');
 
 /**
  * Extract a metadata object of a specified class or create and set

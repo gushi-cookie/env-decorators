@@ -1,5 +1,5 @@
 {
-    "name": "environments-resolve dev container",
+    "name": "env-decorators dev container",
     "dockerComposeFile": "./docker-compose.yml",
     "service": "devcontainer",
     "workspaceFolder": "/workspace",

@@ -1,7 +1,7 @@
 services:
   devcontainer:
-    image: environments-resolve-dev-container
-    container_name: environments-resolve-dev-container
+    image: env-decorators-dev-container
+    container_name: env-decorators-dev-container
     user: ${CONTAINER_UID}:${CONTAINER_GID}
     runtime: runsc
     build:
