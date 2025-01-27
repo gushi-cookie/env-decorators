@@ -7,6 +7,9 @@ services:
     build:
       context: ../
       dockerfile: .devcontainer/Dockerfile
+      args:
+        CONTAINER_UID: ${CONTAINER_UID}
+        CONTAINER_GID: ${CONTAINER_GID}
     volumes:
       - ../:/workspace:cached
     deploy:
