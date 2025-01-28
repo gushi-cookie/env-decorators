@@ -1,0 +1,15 @@
+.devcontainer
+.vscode
+src/
+DEV_BUGS.md
+tsconfig.json
+eslint.config.mjs
+jest.config.mjs
+
+# DECORATORS_USAGE_IN_SPEC_FILES_ERROR
+build/**/*.spec.js
+build/**/*.spec.d.ts
+build/**/*spec.js.map
+
+# TSBUILDINFO_NOT_IGNORED_BY_NPM
+tsconfig.tsbuildinfo

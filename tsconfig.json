@@ -1,6 +1,8 @@
 {
-  "exclude": ["**/*.spec.ts"],
-  "include": ["./src/**/*"],
+  // DECORATORS_USAGE_IN_SPEC_FILES_ERROR
+  // "exclude": ["**/*.spec.ts"],
+  // "include": ["./src/**/*"],
+  
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 

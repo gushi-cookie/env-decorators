@@ -35,7 +35,6 @@ function findMetadataPropertyByEnvName(metadata: ClassMetadata, envName: string)
 
 test('metadata should be set in a class by decorator', () => {
     class A {
-        // @ts-expect-error TS(1240)
         @EnvironmentResolve('TEST')
         instanceProperty: any;
     }
@@ -43,7 +42,6 @@ test('metadata should be set in a class by decorator', () => {
 
 
     class B {
-        // @ts-expect-error TS(1240)
         @EnvironmentResolve('TEST')
         static staticProperty: any;
     }
@@ -52,7 +50,6 @@ test('metadata should be set in a class by decorator', () => {
 
     const symbol = Symbol();
     class C {
-        // @ts-expect-error TS(1240)
         @EnvironmentResolve('TEST')
         [symbol]: any;
     }
@@ -71,19 +68,15 @@ test('metadata properties should be set correctly', () => {
     const symbolProperty = Symbol();
 
     class TestClass {
-        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_1', true, parseCallback)
         firstProperty: any;
     
-        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_2', false)
         secondProperty: any;
     
-        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_3', true, parseCallback)
         static staticProperty: any;
 
-        // @ts-expect-error TS(1240)
         @EnvironmentResolve('ENV_4', false)
         [symbolProperty]: any;
     }
