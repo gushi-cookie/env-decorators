@@ -1,0 +1,17 @@
+name: Prepare CI cache
+
+on:
+  workflow_call:
+    inputs:
+      os: { required: true, type: string }
+
+jobs:
+  prepare-npm-cache:
+    name: Prepare npm cache for ${{ inputs.os }}
+    runs-on: ${{ inputs.os }}
+
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm

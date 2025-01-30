@@ -1,0 +1,33 @@
+name: Testing
+
+on:
+  workflow_call:
+    inputs:
+      os: { required: true, type: string }
+
+jobs:
+  test:
+    name: Node v${{ matrix.node-version }}
+    runs-on: ${{ inputs.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [16.x, 18.x, 20.x, 22.x, 23.x]
+
+    steps:
+      - name: Use Node.js v${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - name: install
+        run: npm install
+      - name: build
+        run: npm build
+      - name: run tests
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          retry_on: error
+          command: npm test

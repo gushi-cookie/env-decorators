@@ -1,0 +1,42 @@
+name: Node CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # Cache preparing per os
+  prepare-npm-cache-ubuntu:
+    uses: ./.github/workflows/prepare-cache.yml
+    with: { os: ubuntu-latest }
+
+  prepare-npm-cache-macos:
+    uses: ./.github/workflows/prepare-cache.yml
+    with: { os: macos-latest }
+
+  prepare-npm-cache-windows:
+    uses: ./.github/workflows/prepare-cache.yml
+    with: { os: windows-latest }
+
+  # Unit testing per os
+  test-ubuntu:
+    name: Testing on ubuntu
+    needs: prepare-npm-cache-ubuntu
+
+    uses: ./.github/workflows/test.yml
+    with: { os: ubuntu-latest }
+
+  test-macos:
+    name: Testing on macos
+    needs: prepare-npm-cache-macos
+
+    uses: ./.github/workflows/test.yml
+    with: { os: macos-latest }
+
+  test-windows:
+    name: Testing on windows
+    needs: prepare-npm-cache-windows
+
+    uses: ./.github/workflows/test.yml
+    with: { os: windows-latest }

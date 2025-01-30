@@ -9,7 +9,8 @@
             "extensions": [
                 "eamodio.gitlens",
                 "streetsidesoftware.code-spell-checker",
-                "timonwong.shellcheck"
+                "timonwong.shellcheck",
+                "GitHub.vscode-github-actions"
             ]
         }
     }
