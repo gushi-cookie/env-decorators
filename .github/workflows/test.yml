@@ -26,7 +26,7 @@ jobs:
           cache: npm
 
       - name: install
-        run: npm install
+        run: npm install --ignore-scripts
 
       - name: build
         run: npm run build
