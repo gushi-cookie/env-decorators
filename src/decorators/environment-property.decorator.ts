@@ -14,7 +14,7 @@ import { formatPropertyDecoratorKey } from '../utils/general.util';
  * @param parseCallback - function for parsing value of the environment variable. Default: undefined.
  * @returns a decorator function.
  */
-export function EnvironmentResolve(envName: string, required: boolean = true, parseCallback?: EnvironmentParseCallback): PropertyDecorator {
+export default function EnvironmentProperty(envName: string, required: boolean = true, parseCallback?: EnvironmentParseCallback): PropertyDecorator {
     return (object: object, key: string | symbol) => {
         let cls: Function;
         let isPropertyStatic = false;

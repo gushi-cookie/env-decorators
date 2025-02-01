@@ -1,20 +1,20 @@
-import { ClassMetadata, EnvironmentParseCallback, EnvironmentProperty } from '../metadata/metadata.interface';
+import { ClassMetadata, EnvironmentParseCallback, EnvironmentPropertyMetadata } from '../metadata/metadata.interface';
 import { extractMetadata } from '../metadata/metadata.util';
-import { EnvironmentResolve } from './environment-resolve.decorator';
+import EnvironmentProperty from './environment-property.decorator';
 
 
 /**
- * Check relevant properties of an EnvironmentProperty object.
+ * Check relevant properties of an EnvironmentPropertyMetadata object.
  */
 function checkMetadataProperty(
-    prop: EnvironmentProperty | undefined,
+    prop: EnvironmentPropertyMetadata | undefined,
     envName: string,
     required: boolean,
     isStatic: boolean,
     parseCallback: EnvironmentParseCallback | undefined
 ) {
     expect(prop).not.toBeUndefined();
-    prop = prop as EnvironmentProperty;
+    prop = prop as EnvironmentPropertyMetadata;
 
     expect(prop.envName).toBe(envName);
     expect(prop.isStatic).toBe(isStatic);
@@ -25,7 +25,7 @@ function checkMetadataProperty(
 /**
  * Find EnvironmentProperty object associated with a passed environment name.
  */
-function findMetadataPropertyByEnvName(metadata: ClassMetadata, envName: string): EnvironmentProperty | undefined {
+function findMetadataPropertyByEnvName(metadata: ClassMetadata, envName: string): EnvironmentPropertyMetadata | undefined {
     for(const prop of metadata.properties) {
         if(prop.envName === envName) return prop;
     }
@@ -35,14 +35,14 @@ function findMetadataPropertyByEnvName(metadata: ClassMetadata, envName: string)
 
 test('metadata should be set in a class by decorator', () => {
     class A {
-        @EnvironmentResolve('TEST')
+        @EnvironmentProperty('TEST')
         instanceProperty: any;
     }
     expect(extractMetadata(A)).not.toBeUndefined();
 
 
     class B {
-        @EnvironmentResolve('TEST')
+        @EnvironmentProperty('TEST')
         static staticProperty: any;
     }
     expect(extractMetadata(B)).not.toBeUndefined();
@@ -50,7 +50,7 @@ test('metadata should be set in a class by decorator', () => {
 
     const symbol = Symbol();
     class C {
-        @EnvironmentResolve('TEST')
+        @EnvironmentProperty('TEST')
         [symbol]: any;
     }
     expect(extractMetadata(C)).not.toBeUndefined();
@@ -68,16 +68,16 @@ test('metadata properties should be set correctly', () => {
     const symbolProperty = Symbol();
 
     class TestClass {
-        @EnvironmentResolve('ENV_1', true, parseCallback)
+        @EnvironmentProperty('ENV_1', true, parseCallback)
         firstProperty: any;
     
-        @EnvironmentResolve('ENV_2', false)
+        @EnvironmentProperty('ENV_2', false)
         secondProperty: any;
     
-        @EnvironmentResolve('ENV_3', true, parseCallback)
+        @EnvironmentProperty('ENV_3', true, parseCallback)
         static staticProperty: any;
 
-        @EnvironmentResolve('ENV_4', false)
+        @EnvironmentProperty('ENV_4', false)
         [symbolProperty]: any;
     }
 

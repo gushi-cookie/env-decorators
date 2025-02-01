@@ -1,19 +1,22 @@
+/**
+ * Function signature of a callback for parsing environment variables.
+ */
 export type EnvironmentParseCallback = (envValue: string) => any;
 
 /**
- * Metadata type for classes that have environment properties.
+ * Metadata type for classes that stores data about decorated class members.
  */
 export interface ClassMetadata {
     /**
      * List of the class's properties that are associated with environment variables.
      */
-    properties: EnvironmentProperty[];
+    properties: EnvironmentPropertyMetadata[];
 }
 
 /**
  * Represents data of a single class property that is associated with an environment variable.
  */
-export interface EnvironmentProperty {
+export interface EnvironmentPropertyMetadata {
     /** Name of the property or its symbol. */
     key: string | symbol;
 

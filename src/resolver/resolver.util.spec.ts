@@ -1,4 +1,4 @@
-import { EnvironmentResolve } from '../decorators/environment-resolve.decorator';
+import EnvironmentProperty from '../decorators/environment-property.decorator';
 import { EnvironmentParseCallback } from '../metadata/metadata.interface';
 import { EnvironmentsSubstitutor } from '../utils/environments-substitutor.util';
 import { resolveStaticProperties } from './resolver.util';
@@ -6,7 +6,7 @@ import { resolveStaticProperties } from './resolver.util';
 
 test('should resolve static property', () => {
     class TestClass {
-        @EnvironmentResolve('ENV_1', true)
+        @EnvironmentProperty('ENV_1', true)
         static staticProp1: string;
 
         static staticProp2: string;
@@ -27,12 +27,12 @@ test('should resolve static property', () => {
 
 test('should resolve static property only for a derived class', () => {
     class A {
-        @EnvironmentResolve('ENV_1')
+        @EnvironmentProperty('ENV_1')
         static parentProperty: string;
     }
 
     class B extends A {
-        @EnvironmentResolve('ENV_2')
+        @EnvironmentProperty('ENV_2')
         static derivedProperty: string;
     }
 
@@ -52,7 +52,7 @@ test('should resolve static property only for a derived class', () => {
 
 test('should resolve static properties for the whole parents chain of a class', () => {
     class A {
-        @EnvironmentResolve('ENV_1')
+        @EnvironmentProperty('ENV_1')
         static propA: string;
     }
 
@@ -65,12 +65,12 @@ test('should resolve static properties for the whole parents chain of a class', 
     }
 
     class D extends C {
-        @EnvironmentResolve('ENV_2')
+        @EnvironmentProperty('ENV_2')
         static propD: string;
     }
 
     class E extends D {
-        @EnvironmentResolve('ENV_3')
+        @EnvironmentProperty('ENV_3')
         static propE: string;
     }
 
@@ -100,7 +100,7 @@ test('should resolve static required properties correctly', () => {
 
 
     class RequiredSet {
-        @EnvironmentResolve('ENV', true)
+        @EnvironmentProperty('ENV', true)
         static property: string;
     }
     resolveStaticProperties(RequiredSet);
@@ -108,14 +108,14 @@ test('should resolve static required properties correctly', () => {
 
 
     class RequiredUnset {
-        @EnvironmentResolve('ENV_UNSET', true)
+        @EnvironmentProperty('ENV_UNSET', true)
         static property: string;
     }
     expect(() => resolveStaticProperties(RequiredUnset)).toThrow();
 
 
     class NonRequiredSet {
-        @EnvironmentResolve('ENV', false)
+        @EnvironmentProperty('ENV', false)
         static property: string;
     }
     resolveStaticProperties(NonRequiredSet);
@@ -123,7 +123,7 @@ test('should resolve static required properties correctly', () => {
 
 
     class NonRequiredUnset {
-        @EnvironmentResolve('ENV_UNSET', false)
+        @EnvironmentProperty('ENV_UNSET', false)
         static property: string;
     }
     expect(() => resolveStaticProperties(NonRequiredUnset)).not.toThrow();
@@ -144,7 +144,7 @@ test('should parse static property', () => {
     }
 
     class TestClass {
-        @EnvironmentResolve('ENV', true, parseCallback)
+        @EnvironmentProperty('ENV', true, parseCallback)
         static date: Date;
     }
 
