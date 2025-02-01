@@ -1,5 +1,6 @@
 import { establishMetadata } from '../metadata/metadata.util';
 import { EnvironmentParseCallback } from '../metadata/metadata.interface';
+import { formatPropertyDecoratorKey } from '../utils/general.util';
 
 
 /**
@@ -23,7 +24,7 @@ export function EnvironmentResolve(envName: string, required: boolean = true, pa
         } else {
             let c = (object as any)['constructor'];
             if(!(c instanceof Function)) {
-                throw new Error(`Couldn't extract a constructor of '${key.toString()}' field, associated with '${envName}' environment.`);
+                throw new Error(`Couldn't extract a constructor of '${formatPropertyDecoratorKey(key)}' property, associated with '${envName}' environment.`);
             }
             cls = c;
         }
