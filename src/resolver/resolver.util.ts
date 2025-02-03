@@ -1,5 +1,5 @@
 import { extractMetadata } from '../metadata/metadata.util';
-import { formatPropertyDecoratorKey } from '../utils/general.util';
+import EnvironmentOfPropertyUndefined from '../errors/environment-of-property-undefined.error';
 
 
 /**
@@ -30,7 +30,7 @@ export function resolveStaticProperties(cls: Function, followProtoChain: boolean
         let environment: any = process.env[property.envName];
         if(!environment) {
             if(!property.required) continue;
-            throw new Error(`Environment property '${property.envName}' associated with '${formatPropertyDecoratorKey(property.key)}' static property is undefined but required.`);
+            throw new EnvironmentOfPropertyUndefined(property.envName, property.key, true);
         }
 
         if(property.parseCallback) environment = property.parseCallback(environment);
@@ -86,7 +86,7 @@ function _resolveEnvironmentsByClass(cls: Function, obj: object): void {
         let environment: any = process.env[property.envName];
         if(!environment) {
             if(!property.required) continue;
-            throw new Error(`Environment property '${property.envName}' associated with '${formatPropertyDecoratorKey(property.key)}' instance property is undefined but required.`);
+            throw new EnvironmentOfPropertyUndefined(property.envName, property.key, false);
         }
 
         if(property.parseCallback) environment = property.parseCallback(environment);
