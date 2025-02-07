@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "This packages allows you to associate class properties with environment variables, via TypeScript decorators.",
   "scripts": {
+    "prettify": "prettier --write .",
     "lint": "eslint",
     "test": "jest",
     "build": "tsc",
