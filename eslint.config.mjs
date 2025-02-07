@@ -5,7 +5,7 @@ import prettierRecommended from 'eslint-plugin-prettier/recommended';
 
 export default ts.config(
   {
-    ignores: ['build/**']
+    ignores: ['build/**'],
   },
   js.configs.recommended,
   ...ts.configs.recommended,
@@ -20,6 +20,6 @@ export default ts.config(
       '@typescript-eslint/no-unsafe-function-type': 'off',
       '@typescript-eslint/no-namespace': 'off',
       'prefer-const': 'off',
-    }
-  }
+    },
+  },
 );

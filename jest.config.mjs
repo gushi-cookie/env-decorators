@@ -4,5 +4,5 @@ export default {
   transform: {
     '^.+.tsx?$': ['ts-jest', {}],
   },
-  modulePathIgnorePatterns: ['./build']
+  modulePathIgnorePatterns: ['./build'],
 };

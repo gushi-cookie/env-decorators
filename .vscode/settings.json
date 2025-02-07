@@ -1,6 +1,4 @@
 {
-    "cSpell.words": [
-        "Substitutor"
-    ],
-    "gitlens.codeLens.scopes": ["document"]
+  "cSpell.words": ["Substitutor"],
+  "gitlens.codeLens.scopes": ["document"]
 }

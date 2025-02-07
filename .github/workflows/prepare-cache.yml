@@ -3,7 +3,7 @@ name: Prepare CI cache
 on:
   workflow_call:
     inputs:
-      os: { required: true, type: string }
+      os: {required: true, type: string}
 
 jobs:
   prepare-npm-cache:
