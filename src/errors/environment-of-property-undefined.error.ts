@@ -1,27 +1,22 @@
+import { EnvironmentPropertyMetadata } from '../metadata/metadata.interface';
 import { formatPropertyDecoratorKey } from '../utils/general.util';
-import RequiredEnvironmentUndefinedError from './required-environment-undefined.error';
+import EnvironmentOfPropertyError from './environment-of-property.error';
 
 
 /**
- * Error type for representing an undefined environment that is required,
- * and a class property associated with it. Also the constructor prepares
- * the error message.
+ * Thrown when a required environment, associated with a class
+ * property, is undefined.
  */
-export default class EnvironmentOfPropertyUndefinedError extends RequiredEnvironmentUndefinedError {
-    public readonly propertyKey: string | symbol;
-    public readonly isStatic: boolean;
+export default class EnvironmentOfPropertyUndefinedError extends EnvironmentOfPropertyError {
+    public override readonly cls: Function;
+    public override readonly property: EnvironmentPropertyMetadata;
 
-    /**
-     * @param environmentName - name of the environment variable.
-     * @param propertyKey - key of the associated property.
-     * @param isStatic - is the property static.
-     */
-    constructor(environmentName: string, propertyKey: string | symbol, isStatic: boolean) {
-        const prefix = isStatic ? 'static' : 'instance';
-        const message = `Environment variable '${environmentName}' associated with '${formatPropertyDecoratorKey(propertyKey)}' ${prefix} property is undefined but required.`;
-        super(environmentName, message);
+    constructor(cls: Function, property: EnvironmentPropertyMetadata) {
+        const prefix = property.isStatic ? 'static' : 'instance';
+        const message = `Environment variable '${property.envName}' associated with '${formatPropertyDecoratorKey(property.key)}' ${prefix} property is undefined but required.`;
+        super(message);
 
-        this.propertyKey = propertyKey;
-        this.isStatic = isStatic;
+        this.cls = cls;
+        this.property = property;
     }
 }

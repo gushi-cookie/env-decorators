@@ -30,7 +30,7 @@ export function resolveStaticProperties(cls: Function, followProtoChain: boolean
         let environment: any = process.env[property.envName];
         if(!environment) {
             if(!property.required) continue;
-            throw new EnvironmentOfPropertyUndefined(property.envName, property.key, true);
+            throw new EnvironmentOfPropertyUndefined(cls, property);
         }
 
         if(property.parseCallback) environment = property.parseCallback(environment);
@@ -86,7 +86,7 @@ function _resolveEnvironmentsByClass(cls: Function, obj: object): void {
         let environment: any = process.env[property.envName];
         if(!environment) {
             if(!property.required) continue;
-            throw new EnvironmentOfPropertyUndefined(property.envName, property.key, false);
+            throw new EnvironmentOfPropertyUndefined(cls, property);
         }
 
         if(property.parseCallback) environment = property.parseCallback(environment);

@@ -1,4 +1,5 @@
 import EnvironmentProperty from '../decorators/environment-property.decorator';
+import metadataUtil from '../metadata/metadata.util';
 import resolver from '../resolver/resolver.util';
 import EnvironmentOfPropertyUndefinedError from './environment-of-property-undefined.error';
 
@@ -7,7 +8,7 @@ const envName = 'TEST_ENV_FOR_JEST';
 const symbol = Symbol('TEST_SYMBOL_PROPERTY');
 
 
-describe('should throw the error when the required environment is undefined', () => {
+describe('should throw the error when a required environment is undefined', () => {
     test('for instance property', () => {
         class Cls {
             @EnvironmentProperty(envName, true)
@@ -45,7 +46,7 @@ describe('should throw the error when the required environment is undefined', ()
 });
 
 
-describe('should not throw the error when the required environment is undefined', () => {
+describe('should not throw the error when a non-required environment is undefined', () => {
     test('for instance property', () => {
         class Cls {
             @EnvironmentProperty(envName, false)
@@ -87,8 +88,6 @@ describe('properties of the error object should be correct', () => {
     const propertyName = 'myProperty';
 
     test('for instance property', () => {
-        jest.spyOn(global.console, 'log');
-
         class Cls {
             @EnvironmentProperty(envName, true)
             [propertyName]: string;
@@ -103,9 +102,8 @@ describe('properties of the error object should be correct', () => {
 
         err = err as EnvironmentOfPropertyUndefinedError;
         expect(err).toBeInstanceOf(EnvironmentOfPropertyUndefinedError);
-        expect(err.environmentName).toBe(envName);
-        expect(err.propertyKey).toBe(propertyName);
-        expect(err.isStatic).toBe(false);
+        expect(err.cls).toBe(Cls);
+        expect(err.property).toBe(metadataUtil.extractMetadata(Cls)?.properties[0]);
     });
 
     test('for instance symbol property', () => {
@@ -123,9 +121,8 @@ describe('properties of the error object should be correct', () => {
 
         err = err as EnvironmentOfPropertyUndefinedError;
         expect(err).toBeInstanceOf(EnvironmentOfPropertyUndefinedError);
-        expect(err.environmentName).toBe(envName);
-        expect(err.propertyKey).toBe(symbol);
-        expect(err.isStatic).toBe(false);
+        expect(err.cls).toBe(Cls);
+        expect(err.property).toBe(metadataUtil.extractMetadata(Cls)?.properties[0]);
     });
 
     test('for static property', () => {
@@ -143,9 +140,8 @@ describe('properties of the error object should be correct', () => {
 
         err = err as EnvironmentOfPropertyUndefinedError;
         expect(err).toBeInstanceOf(EnvironmentOfPropertyUndefinedError);
-        expect(err.environmentName).toBe(envName);
-        expect(err.propertyKey).toBe(propertyName);
-        expect(err.isStatic).toBe(true);
+        expect(err.cls).toBe(Cls);
+        expect(err.property).toBe(metadataUtil.extractMetadata(Cls)?.properties[0]);
     });
 
     test('for static symbol property', () => {
@@ -163,8 +159,7 @@ describe('properties of the error object should be correct', () => {
 
         err = err as EnvironmentOfPropertyUndefinedError;
         expect(err).toBeInstanceOf(EnvironmentOfPropertyUndefinedError);
-        expect(err.environmentName).toBe(envName);
-        expect(err.propertyKey).toBe(symbol);
-        expect(err.isStatic).toBe(true);
+        expect(err.cls).toBe(Cls);
+        expect(err.property).toBe(metadataUtil.extractMetadata(Cls)?.properties[0]);
     })
 });
