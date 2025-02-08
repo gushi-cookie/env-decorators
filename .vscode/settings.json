@@ -1,4 +1,12 @@
 {
-  "cSpell.words": ["Substitutor"],
-  "gitlens.codeLens.scopes": ["document"]
+  "cSpell.customDictionaries": {
+    "main": {
+      "name": "main",
+      "path": "${workspaceFolder}/.vscode/cspell.dictionary.txt",
+      "description": "Words used in this project",
+      "addWords": true
+    }
+  },
+  "cSpell.noConfigSearch": true,
+  "gitlens.codeLens.scopes": ["document"],
 }

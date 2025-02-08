@@ -7,7 +7,8 @@
     "lint": "eslint",
     "test": "jest",
     "build": "tsc",
-    "prepare": "npm run lint && npm run test && npm run build"
+    "check-spell": "cspell .",
+    "prepare": "npm run lint && npm run check-spell && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "@types/eslint__js": "^8.42.3",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.5",
+    "cspell": "^8.17.3",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-jest": "^28.11.0",
