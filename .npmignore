@@ -4,6 +4,10 @@ DEV_BUGS.md
 tsconfig.json
 eslint.config.mjs
 jest.config.mjs
+cspell.config.mjs
+prettier.config.mjs
+.github
+coverage
 
 # DECORATORS_USAGE_IN_SPEC_FILES_ERROR
 build/**/*.spec.js

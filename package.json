@@ -4,11 +4,11 @@
   "description": "This packages allows you to associate class properties with environment variables, via TypeScript decorators.",
   "scripts": {
     "prettify": "prettier --write .",
-    "lint": "eslint",
+    "lint": "eslint && npm run check-spell",
     "test": "jest",
     "build": "tsc",
     "check-spell": "cspell .",
-    "prepare": "npm run lint && npm run check-spell && npm run test && npm run build"
+    "prepare": "npm run lint && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
