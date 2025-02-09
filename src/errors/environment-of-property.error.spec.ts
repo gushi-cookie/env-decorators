@@ -1,10 +1,10 @@
-import EnvironmentProperty from '../decorators/environment-property.decorator';
+import {EnvironmentProperty} from '../decorators/environment-property.decorator';
 import {
   ClassMetadata,
   EnvironmentPropertyMetadata,
 } from '../metadata/metadata.interface';
 import metadataUtil from '../metadata/metadata.util';
-import EnvironmentOfPropertyError from './environment-of-property.error';
+import {EnvironmentOfPropertyError} from './environment-of-property.error';
 
 test('derived class should implement abstract members', () => {
   class Cls {

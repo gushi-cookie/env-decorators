@@ -1,7 +1,7 @@
-import EnvironmentProperty from '../decorators/environment-property.decorator';
+import {EnvironmentProperty} from '../decorators/environment-property.decorator';
 import metadataUtil from '../metadata/metadata.util';
 import resolver from '../resolver/resolver.util';
-import EnvironmentOfPropertyUndefinedError from './environment-of-property-undefined.error';
+import {EnvironmentOfPropertyUndefinedError} from './environment-of-property-undefined.error';
 
 const envName = 'TEST_ENV_FOR_JEST';
 const symbol = Symbol('TEST_SYMBOL_PROPERTY');

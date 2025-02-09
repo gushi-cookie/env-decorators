@@ -1,5 +1,5 @@
 import {extractMetadata} from '../metadata/metadata.util';
-import EnvironmentOfPropertyUndefined from '../errors/environment-of-property-undefined.error';
+import {EnvironmentOfPropertyUndefinedError} from '../errors/environment-of-property-undefined.error';
 
 /**
  * Write environments to static properties of a class, according to its metadata.
@@ -31,7 +31,7 @@ export function resolveStaticProperties(
     let environment: any = process.env[property.envName];
     if (!environment) {
       if (!property.required) continue;
-      throw new EnvironmentOfPropertyUndefined(cls, property);
+      throw new EnvironmentOfPropertyUndefinedError(cls, property);
     }
 
     if (property.parseCallback)
@@ -89,7 +89,7 @@ function _resolveEnvironmentsByClass(cls: Function, obj: object): void {
     let environment: any = process.env[property.envName];
     if (!environment) {
       if (!property.required) continue;
-      throw new EnvironmentOfPropertyUndefined(cls, property);
+      throw new EnvironmentOfPropertyUndefinedError(cls, property);
     }
 
     if (property.parseCallback)

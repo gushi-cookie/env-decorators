@@ -4,7 +4,7 @@ import {EnvironmentPropertyMetadata} from '../metadata/metadata.interface';
  * Base error class that represents a class property associated with
  * an environment variable.
  */
-export default abstract class EnvironmentOfPropertyError extends Error {
+export abstract class EnvironmentOfPropertyError extends Error {
   /**
    * Class of the property.
    */

@@ -1,12 +1,12 @@
 import {EnvironmentPropertyMetadata} from '../metadata/metadata.interface';
 import {formatPropertyDecoratorKey} from '../utils/general.util';
-import EnvironmentOfPropertyError from './environment-of-property.error';
+import {EnvironmentOfPropertyError} from './environment-of-property.error';
 
 /**
  * Thrown when a required environment, associated with a class
  * property, is undefined.
  */
-export default class EnvironmentOfPropertyUndefinedError extends EnvironmentOfPropertyError {
+export class EnvironmentOfPropertyUndefinedError extends EnvironmentOfPropertyError {
   public override readonly cls: Function;
   public override readonly property: EnvironmentPropertyMetadata;
 

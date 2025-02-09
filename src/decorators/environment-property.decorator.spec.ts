@@ -4,7 +4,7 @@ import {
   EnvironmentPropertyMetadata,
 } from '../metadata/metadata.interface';
 import {extractMetadata} from '../metadata/metadata.util';
-import EnvironmentProperty from './environment-property.decorator';
+import {EnvironmentProperty} from './environment-property.decorator';
 
 /**
  * Check relevant properties of an EnvironmentPropertyMetadata object.

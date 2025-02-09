@@ -13,7 +13,7 @@ import {formatPropertyDecoratorKey} from '../utils/general.util';
  * @param parseCallback - function for parsing value of the environment variable. Default: undefined.
  * @returns a decorator function.
  */
-export default function EnvironmentProperty(
+export function EnvironmentProperty(
   envName: string,
   required: boolean = true,
   parseCallback?: EnvironmentParseCallback,

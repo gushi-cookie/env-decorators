@@ -1,4 +1,4 @@
-import EnvironmentProperty from '../decorators/environment-property.decorator';
+import {EnvironmentProperty} from '../decorators/environment-property.decorator';
 import {EnvironmentParseCallback} from '../metadata/metadata.interface';
 import {EnvironmentsSubstitutor} from '../utils/environments-substitutor.util';
 import {resolveStaticProperties} from './resolver.util';
