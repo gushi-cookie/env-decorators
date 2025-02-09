@@ -2,6 +2,14 @@
   "name": "env-decorators",
   "version": "0.0.1",
   "description": "This packages allows you to associate class properties with environment variables, via TypeScript decorators.",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "default": "./build/index.js"
+    }
+  },
   "scripts": {
     "prettify": "prettier --write .",
     "lint": "eslint && npm run check-spell",
