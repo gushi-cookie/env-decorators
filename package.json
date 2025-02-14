@@ -8,6 +8,26 @@
     ".": {
       "types": "./build/index.d.ts",
       "default": "./build/index.js"
+    },
+    "./decorators": {
+      "types": "./build/decorators/index.d.ts",
+      "default": "./build/decorators/index.js"
+    },
+    "./errors": {
+      "types": "./build/errors/index.d.ts",
+      "default": "./build/errors/index.js"
+    },
+    "./metadata": {
+      "types": "./build/metadata/index.d.ts",
+      "default": "./build/metadata/index.js"
+    },
+    "./resolver": {
+      "types": "./build/resolver/index.d.ts",
+      "default": "./build/resolver/index.js"
+    },
+    "./utils": {
+      "types": "./build/utils/index.d.ts",
+      "default": "./build/utils/index.js"
     }
   },
   "scripts": {
