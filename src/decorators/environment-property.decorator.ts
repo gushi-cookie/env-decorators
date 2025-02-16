@@ -16,7 +16,7 @@ import {formatPropertyDecoratorKey} from '../utils/general.util';
 export function EnvironmentProperty(
   envName: string,
   required: boolean = true,
-  parseCallback?: EnvironmentParseCallback,
+  parseCallback?: EnvironmentParseCallback<any>,
 ): PropertyDecorator {
   return (object: object, key: string | symbol) => {
     let cls: Function;

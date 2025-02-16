@@ -14,7 +14,7 @@ function checkMetadataProperty(
   envName: string,
   required: boolean,
   isStatic: boolean,
-  parseCallback: EnvironmentParseCallback | undefined,
+  parseCallback: EnvironmentParseCallback<any> | undefined,
 ) {
   expect(prop).not.toBeUndefined();
   prop = prop as EnvironmentPropertyMetadata;
@@ -64,7 +64,7 @@ test("metadata should'nt be set in a class", () => {
 });
 
 test('metadata properties should be set correctly', () => {
-  const parseCallback: EnvironmentParseCallback = function () {};
+  const parseCallback: EnvironmentParseCallback<any> = function () {};
 
   const symbolProperty = Symbol();
 

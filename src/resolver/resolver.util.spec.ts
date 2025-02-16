@@ -129,9 +129,9 @@ test('should parse static property', () => {
   substitutor.addSubstitution('ENV', value);
   substitutor.substitute();
 
-  const parseCallback: EnvironmentParseCallback = function (
+  const parseCallback: EnvironmentParseCallback<any> = function (
     envValue: string,
-  ): any {
+  ) {
     return new Date(parseInt(envValue));
   };
 

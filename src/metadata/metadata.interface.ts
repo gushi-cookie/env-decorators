@@ -1,7 +1,9 @@
 /**
  * Function signature of a callback for parsing environment variables.
  */
-export type EnvironmentParseCallback = (envValue: string) => any;
+export interface EnvironmentParseCallback<T> {
+  (val: string): T;
+}
 
 /**
  * Metadata type for classes that stores data about decorated class members.
@@ -30,5 +32,5 @@ export interface EnvironmentPropertyMetadata {
   required: boolean;
 
   /** Parse callback function for the environment variable. */
-  parseCallback?: EnvironmentParseCallback;
+  parseCallback?: EnvironmentParseCallback<any>;
 }

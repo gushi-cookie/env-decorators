@@ -28,15 +28,17 @@ export function resolveStaticProperties(
   for (let property of metadata.properties) {
     if (!property.isStatic) continue;
 
-    let environment: any = process.env[property.envName];
+    let environment: string | undefined = process.env[property.envName];
     if (!environment) {
       if (!property.required) continue;
       throw new EnvironmentOfPropertyUndefinedError(cls, property);
     }
 
-    if (property.parseCallback)
-      environment = property.parseCallback(environment);
-    (cls as any)[property.key] = environment;
+    if (property.parseCallback) {
+      (cls as any)[property.key] = property.parseCallback(environment);
+    } else {
+      (cls as any)[property.key] = environment;
+    }
   }
 
   if (followProtoChain) {
@@ -86,15 +88,17 @@ function _resolveEnvironmentsByClass(cls: Function, obj: object): void {
   for (let property of metadata.properties) {
     if (property.isStatic) continue;
 
-    let environment: any = process.env[property.envName];
+    let environment: string | undefined = process.env[property.envName];
     if (!environment) {
       if (!property.required) continue;
       throw new EnvironmentOfPropertyUndefinedError(cls, property);
     }
 
-    if (property.parseCallback)
-      environment = property.parseCallback(environment);
-    (obj as any)[property.key] = environment;
+    if (property.parseCallback) {
+      (obj as any)[property.key] = property.parseCallback(environment);
+    } else {
+      (obj as any)[property.key] = environment;
+    }
   }
 }
 
