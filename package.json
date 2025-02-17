@@ -21,6 +21,10 @@
       "types": "./build/metadata/index.d.ts",
       "default": "./build/metadata/index.js"
     },
+    "./parsers": {
+      "types": "./build/parsers/index.d.ts",
+      "default": "./build/metadata/index.js"
+    },
     "./resolver": {
       "types": "./build/resolver/index.d.ts",
       "default": "./build/resolver/index.js"
