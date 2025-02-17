@@ -21,7 +21,7 @@ test('should parse dates: toDate()', () => {
 test('should parse regular expressions: toRegExp()', () => {
   expect(() => toRegExp('\\')).toThrow(EnvironmentParseError);
   expect(() => toRegExp('\\\\')).not.toThrow(EnvironmentParseError);
-  expect(() => toRegExp('[A-Za-z_0-9]\\FLAGS:giv\\')).not.toThrow(
+  expect(() => toRegExp('[A-Za-z_0-9]\\FLAGS:gid\\')).not.toThrow(
     EnvironmentParseError,
   );
   expect(() => toRegExp('\\FLAGS:vu\\')).toThrow(EnvironmentParseError);
